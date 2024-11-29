@@ -29,7 +29,7 @@ const strings = Sstrings;
       data-hs-collapse="#hs-navbar-example"
     >
       <svg
-        class="hs-collapse-open:hidden shrink-0 size-4"
+        class="hs-collapse-open:hidden shrink-0 size-4 animate-impulse-rotation-left"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -45,7 +45,7 @@ const strings = Sstrings;
         <line x1="3" x2="21" y1="18" y2="18" />
       </svg>
       <svg
-        class="hs-collapse-open:block hidden shrink-0 size-4"
+        class="hs-collapse-open:block hidden shrink-0 size-4 animate-impulse-rotation-right "
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -65,14 +65,16 @@ const strings = Sstrings;
     <!-- Off-Canvas Menu -->
     <div
       id="hs-navbar-example"
-      class="fixed inset-y-0 left-0 hidden hs-collapse bg-white text-white w-64 p-6 overflow-y-auto"
+      class="fixed inset-y-0 left-0 hidden hs-collapse bg-white text-white w-64 p-6 overflow-y-auto animate-swing-drop-in"
       aria-labelledby="hs-navbar-example-collapse"
     >
-  
+  <ul class="flex flex-col items-center justify-center space-y-4 ">
+   
     {strings.navBarLinks.map(link => (
       <Navlink url={link.url} name={link.name} />
     ))}
-     
+    
+     </ul>
     </div>
   </nav>
 </header>
