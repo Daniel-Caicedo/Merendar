@@ -5,6 +5,8 @@ import Sstrings from "@utils/Navigation.ts"
 
 const homeUrl = "/";
 const strings = Sstrings;
+
+
 ---
 
 <header class="fixed inset-0 z-50 bg-transparent text-sm dark:bg-neutral-800">
@@ -22,14 +24,14 @@ const strings = Sstrings;
     <button
       type="button"
       class="hs-collapse-toggle relative size-10 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-white dark:hover:bg-white/10"
-      id="hs-navbar-example-collapse"
+      id="toggle-navbar"
       aria-expanded="false"
-      aria-controls="hs-navbar-example"
+      aria-controls="hs-navbar"
       aria-label="Toggle navigation"
-      data-hs-collapse="#hs-navbar-example"
+      data-hs-collapse="#hs-navbar"
     >
       <svg
-        class="hs-collapse-open:hidden shrink-0 size-4 animate-impulse-rotation-left"
+        class="hs-collapse-open:hidden shrink-0 size-4 animate-impulse-rotation-left animate-duration-500"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -45,7 +47,7 @@ const strings = Sstrings;
         <line x1="3" x2="21" y1="18" y2="18" />
       </svg>
       <svg
-        class="hs-collapse-open:block hidden shrink-0 size-4 animate-impulse-rotation-right "
+        class="hs-collapse-open:block hidden shrink-0 size-4 animate-impulse-rotation-right animate-duration-500 "
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -64,9 +66,9 @@ const strings = Sstrings;
 
     <!-- Off-Canvas Menu -->
     <div
-      id="hs-navbar-example"
-      class="fixed inset-y-0 left-0 hidden hs-collapse bg-white text-white w-64 p-6 overflow-y-auto animate-swing-drop-in"
-      aria-labelledby="hs-navbar-example-collapse"
+      id="hs-navbar"
+      class="fixed inset-y-0 left-0 hidden hs-collapse bg-white text-white w-64 p-6 overflow-y-auto  animate-fade-in"
+      aria-labelledby="hs-navbar-collapse"
     >
   <ul class="flex flex-col items-center justify-center space-y-4 ">
    
@@ -76,6 +78,9 @@ const strings = Sstrings;
     
      </ul>
     </div>
+
+
+    
   </nav>
 </header>
 
@@ -83,3 +88,6 @@ const strings = Sstrings;
   import "@preline/collapse/index.js";
   import "@preline/overlay/index.js";
 </script>
+
+
+ 
