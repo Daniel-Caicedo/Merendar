@@ -1,12 +1,13 @@
-// An array of links for navigation bar Arreglo de links para la navegacion
-// Español
+// Un areglo de objectos con los links de navegacion para el navbar
+
 const navBarLinks = [
-    { name: "Home", url: "/" },
+    { name: "Inicio", url: "/" },
+    { name: "Nosotros", url: "#" },
+    { name: "Blog", url: "/blog" },
     { name: "Servicios", url: "#" },
-    { name: "Vlog", url: "/blog" },
     { name: "Contactanos", url: "#" },
   ];
-  // An array of links for footer un arreglo de links para el footer
+  // Arreglo de links para el footer
   const footerLinks = [
     {
       section: "Ecosistema",
@@ -26,7 +27,7 @@ const navBarLinks = [
       ],
     },
   ];
-  // An object with the  links for social icons
+  // Un arreglo 
   const socialLinks = {
     facebook: "https://www.facebook.com/",
     x: "https://twitter.com/",
