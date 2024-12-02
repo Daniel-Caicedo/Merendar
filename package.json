@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^3.6.3",
     "@astrojs/tailwind": "^5.1.2",
     "@midudev/tailwind-animations": "^0.1.0",
     "@preline/accordion": "^2.5.0",
@@ -17,10 +18,14 @@
     "@preline/dropdown": "^2.5.0",
     "@preline/overlay": "^2.5.0",
     "@preline/tabs": "^2.5.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "astro": "^5.0.0-beta.12",
     "flowbite": "^2.5.2",
     "gsap": "^3.12.5",
     "preline": "^2.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "swiper": "^11.1.15",
     "typescript": "^5.7.2"
   },
