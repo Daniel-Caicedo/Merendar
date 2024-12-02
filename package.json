@@ -21,6 +21,7 @@
     "flowbite": "^2.5.2",
     "gsap": "^3.12.5",
     "preline": "^2.5.1",
+    "swiper": "^11.1.15",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
