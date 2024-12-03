@@ -2,10 +2,10 @@
 
 ---
 <div>
-<section class=" snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-[url('/src/images/cafe.jpg')] bg-cover bg-center">
+<section id="first" class=" snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-[url('/src/images/cafe.jpg')] bg-cover bg-center">
   <h1>uno</h1>
 </section>
-<section class="snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-red-400">
+<section class="snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-[url('/src/images/Fondo-trama.jpg')] bg-cover bg-center">
     <h1>dos</h1>
 </section>
 <section class="snap-start snap-y snap-mandatory w-full h-screen bg-orange-500">
@@ -30,6 +30,9 @@ html {
  </style>
  
  <script >
+
+  var div = document.getElementById("first");
+
   var div = document.getElementById("last");
 
   if (div !== null) {
@@ -55,7 +58,8 @@ html {
           direction = -1; // Scroll up
         } else if (currentScroll <= 0) {
           direction = 1; // Scroll down
-        }}
+        }
+      } 
       }, 1000); // Allow time for smooth scroll to complete
     }, 3000); // Trigger scroll every 3 seconds
   } else {
