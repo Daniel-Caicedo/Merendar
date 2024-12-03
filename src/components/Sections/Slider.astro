@@ -28,25 +28,31 @@ html {
   scroll-snap-type: y mandatory;
 }
  </style>
+ 
+<script client:load>
+  var div = document.getElementById("last");
+  var x = div.clientHeight; // Initial scroll step value
+  var direction = 1; // 1 for down, -1 for up
 
-  <script>
-var x;
-var div = document.getElementById("last");
-  
   var scrollDown = setInterval(function () {
-  
-    window.scrollBy({ 
-    top: x,
-    left: 0, 
-    behavior: 'smooth'
-  });
-    
-    if(window.pageYOffset == 0){
-      x = div.clientHeight;
-      
-    } else if(window.pageYOffset == div.offsetTop){
-      x = -div.clientHeight;
-    }
-}, 3000) 
+    // Scroll the page by `x` units
+    window.scrollBy({
+      top: x * direction,
+      left: 0,
+      behavior: "smooth",
+    });
 
-  </script>
+    // Check current scroll position
+    setTimeout(() => {
+      const currentScroll = window.scrollY;
+      const targetScroll = div.offsetTop;
+
+      // Reverse direction if the scroll reaches the div or the top
+      if (currentScroll >= targetScroll) {
+        direction = -1; // Scroll up
+      } else if (currentScroll <= 0) {
+        direction = 1; // Scroll down
+      }
+    }, 1000); // Allow time for smooth scroll to complete
+  }, 3000); // Trigger scroll every 3 seconds
+</script>
