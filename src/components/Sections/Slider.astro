@@ -98,7 +98,16 @@ if (firstDiv !== null && lastDiv !== null) {
           left: 0,
           behavior: "smooth",
         });
-      }}
+      }
+      if(currentScroll==firstDivPosition){
+        direction=-1
+        window.scrollTo({
+          top: lastDivPosition,
+          left:0,
+          behavior:"smooth",
+        })
+      }
+    }
     }, 1000); // Allow time for smooth scroll to complete
   }, 3000); // Trigger scroll every 3 seconds
 } else {
