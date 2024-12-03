@@ -1,6 +1,13 @@
 ---
 
 ---
+<ul class="nav-dots" id="js-dots">
+  <li class="nav-dot"></li>
+  <li class="nav-dot"></li>
+  <li class="nav-dot"></li>
+  <li class="nav-dot"></li>
+  <li class="nav-dot"></li>
+</ul>
 <div>
 <section id="first" class=" snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-[url('/src/images/cafe.jpg')] bg-cover bg-center">
   <h1>uno</h1>
@@ -27,42 +34,75 @@ html {
   scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
 }
+
+.nav-dots {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #52616a;
+  border-radius: 50%;
+  list-style: none;
+  background: #c9d6de;
+  transition: all 0.3s;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+
+  &:hover,
+  &.is-active {
+    transform: scale(1.8);
+    background: transparent;
+  }
+}
+
  </style>
  
- <script >
+ <script>
+  var firstDiv = document.getElementById("first");
+var lastDiv = document.getElementById("last");
 
-  var div = document.getElementById("first");
+if (firstDiv !== null && lastDiv !== null) {
+  var scrollStep = lastDiv.clientHeight; // Initial scroll step value
+  var direction = 1; // 1 for down, -1 for up
 
-  var div = document.getElementById("last");
+  setInterval(function () {
+    // Scroll the page by `scrollStep` units
+    window.scrollBy({
+      top: scrollStep * direction,
+      left: 0,
+      behavior: "smooth",
+    });
 
-  if (div !== null) {
-    var x = div.clientHeight; // Initial scroll step value
-    var direction = 1; // 1 for down, -1 for up
+    // Check the current scroll position
+    setTimeout(() => {
+      if(lastDiv !== null && firstDiv !== null){
+      const currentScroll = window.scrollY;
+      const lastDivPosition = lastDiv.offsetTop;
+      const firstDivPosition = firstDiv.offsetTop;
 
-    var scrollDown = setInterval(function () {
-      // Scroll the page by `x` units
-      window.scrollBy({
-        top: x * direction,
-        left: 0,
-        behavior: "smooth",
-      });
+      // If scrolled to the last div, reset to the first div
+      if (currentScroll >= lastDivPosition) {
+        direction = 1; // Ensure direction remains downward
+        window.scrollTo({
+          top: firstDivPosition,
+          left: 0,
+          behavior: "smooth",
+        });
+      }}
+    }, 1000); // Allow time for smooth scroll to complete
+  }, 3000); // Trigger scroll every 3 seconds
+} else {
+  console.warn("Elements with IDs 'first' and/or 'last' not found.");
+}
 
-      // Check current scroll position
-      setTimeout(() => {
-        if(div !==null){
-        const currentScroll = window.scrollY;
-        const targetScroll = div.offsetTop;
-        
-        // Reverse direction if the scroll reaches the div or the top
-        if (currentScroll >= targetScroll) {
-          direction = -1; // Scroll up
-        } else if (currentScroll <= 0) {
-          direction = 1; // Scroll down
-        }
-      } 
-      }, 1000); // Allow time for smooth scroll to complete
-    }, 3000); // Trigger scroll every 3 seconds
-  } else {
-    console.warn("Element with ID 'last' not found.");
-  }
-</script>
+ </script>
