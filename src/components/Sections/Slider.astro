@@ -2,10 +2,10 @@
 
 ---
 <div>
-<section class=" snap-start snap-y snap-mandatory w-full h-screen bg-[url('/src/images/cafe.jpg')] bg-cover bg-center">
+<section class=" snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-[url('/src/images/cafe.jpg')] bg-cover bg-center">
   <h1>uno</h1>
 </section>
-<section class="snap-start snap-y snap-mandatory w-full h-screen bg-red-400">
+<section class="snap-start scroll-smooth snap-y snap-mandatory w-full h-screen bg-red-400">
     <h1>dos</h1>
 </section>
 <section class="snap-start snap-y snap-mandatory w-full h-screen bg-orange-500">
@@ -14,7 +14,7 @@
 <section class="snap-start snap-y snap-mandatory w-full h-screen bg-purple-500">
     <h1>cuatro</h1>
 </section>
-<section class="snap-start snap-y snap-mandatory w-full h-screen bg-green-400">
+<section id="last" class="snap-start snap-y snap-mandatory w-full h-screen bg-green-400">
     <h1>cinco</h1>
 </section>
 </div>
@@ -29,4 +29,24 @@ html {
 }
  </style>
 
+  <script>
+var x;
+var div = document.getElementById("last");
   
+  var scrollDown = setInterval(function () {
+  
+    window.scrollBy({ 
+    top: x,
+    left: 0, 
+    behavior: 'smooth'
+  });
+    
+    if(window.pageYOffset == 0){
+      x = div.clientHeight;
+      
+    } else if(window.pageYOffset == div.offsetTop){
+      x = -div.clientHeight;
+    }
+}, 3000) 
+
+  </script>
