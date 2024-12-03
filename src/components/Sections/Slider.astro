@@ -46,15 +46,16 @@ html {
 
       // Check current scroll position
       setTimeout(() => {
+        if(div !==null){
         const currentScroll = window.scrollY;
         const targetScroll = div.offsetTop;
-
+        
         // Reverse direction if the scroll reaches the div or the top
         if (currentScroll >= targetScroll) {
           direction = -1; // Scroll up
         } else if (currentScroll <= 0) {
           direction = 1; // Scroll down
-        }
+        }}
       }, 1000); // Allow time for smooth scroll to complete
     }, 3000); // Trigger scroll every 3 seconds
   } else {
