@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
           left: 0,
           behavior: "smooth",
         });
-      } else if (event.deltaY > 0 && currentScroll >= lastDivPosition) {
+      } else if (event.deltaY >= 0 && currentScroll >= lastDivPosition) {
         // Scrolling down on the last item, jump to the first item
         window.scrollTo({
           top: firstDivPosition,
