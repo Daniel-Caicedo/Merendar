@@ -67,55 +67,14 @@ html {
 
  </style>
  
- <script>
-  var firstDiv = document.getElementById("first");
-var lastDiv = document.getElementById("last");
-
-if (firstDiv !== null && lastDiv !== null) {
-  var scrollStep = lastDiv.clientHeight; // Initial scroll step value
-  var direction = 1; // 1 for down, -1 for up
-
-  setInterval(function () {
-    // Scroll the page by `scrollStep` units
-    window.scrollBy({
-      top: scrollStep * direction,
-      left: 0,
-      behavior: "smooth",
-    });
-
-    // Check the current scroll position
-    setTimeout(() => {
-      if(lastDiv !== null && firstDiv !== null){
-      const currentScroll = window.scrollY;
-      const lastDivPosition = lastDiv.offsetTop;
-      const firstDivPosition = firstDiv.offsetTop;
-
-      // If scrolled to the last div, reset to the first div
-      if (currentScroll >= lastDivPosition) {
-        direction = 1; // Ensure direction remains downward
-        window.scrollTo({
-          top: firstDivPosition,
-          left: 0,
-          behavior: "smooth",
-        });
-      }
-     
-    }
-    }, 1000); // Allow time for smooth scroll to complete
-  }, 6000); // Trigger scroll every 3 seconds
-} else {
-  console.warn("Elements with IDs 'first' and/or 'last' not found.");
-}
-
- </script>
- <script>
-
-document.addEventListener("DOMContentLoaded", () => {
+ <script>document.addEventListener("DOMContentLoaded", () => {
   const firstDiv = document.getElementById("first");
   const lastDiv = document.getElementById("last");
 
   if (firstDiv && lastDiv) {
     let isNavigating = false; // Flag to prevent multiple navigations
+    const scrollStep = lastDiv.clientHeight; // Initial scroll step value
+    let direction = 1; // 1 for down, -1 for up
 
     // Function to handle scrolling behavior
     const handleScroll = (event:any) => {
@@ -157,9 +116,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Attach event listener to prevent default scrolling
     window.addEventListener("wheel", handleScroll, { passive: false });
+
+    // Automated interval scrolling
+    setInterval(() => {
+      if (isNavigating) return; // Prevent automated scrolling during manual navigation
+
+      const currentScroll = window.scrollY;
+      const firstDivPosition = firstDiv.offsetTop;
+      const lastDivPosition = lastDiv.offsetTop;
+
+      // Scroll the page by `scrollStep` units
+      window.scrollBy({
+        top: scrollStep * direction,
+        left: 0,
+        behavior: "smooth",
+      });
+
+      setTimeout(() => {
+        // If scrolled to the last div, reset to the first div
+        if (currentScroll >= lastDivPosition) {
+          direction = 1; // Ensure direction remains downward
+          window.scrollTo({
+            top: firstDivPosition,
+            left: 0,
+            behavior: "smooth",
+          });
+        }
+      }, 1000); // Allow time for smooth scroll to complete
+    }, 3000); // Trigger scroll every 3 seconds
   } else {
     console.warn("Elements with IDs 'first' and/or 'last' not found.");
   }
 });
-
- </script>
+</script>
