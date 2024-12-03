@@ -99,13 +99,15 @@ if (firstDiv !== null && lastDiv !== null) {
           behavior: "smooth",
         });
       }
-      if(currentScroll==firstDivPosition){
-        direction=-1
-        window.scrollTo({
+      if (currentScroll == firstDivPosition && window.scrollY<=-1){
+
+          direction = 1; // Ensure direction remains downward
+          window.scrollTo({
           top: lastDivPosition,
-          left:0,
-          behavior:"smooth",
-        })
+          left: 0,
+          behavior: "smooth",
+        });
+      
       }
     }
     }, 1000); // Allow time for smooth scroll to complete
