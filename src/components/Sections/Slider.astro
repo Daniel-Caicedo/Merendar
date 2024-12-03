@@ -102,7 +102,7 @@ if (firstDiv !== null && lastDiv !== null) {
      
     }
     }, 1000); // Allow time for smooth scroll to complete
-  }, 5000); // Trigger scroll every 3 seconds
+  }, 6000); // Trigger scroll every 3 seconds
 } else {
   console.warn("Elements with IDs 'first' and/or 'last' not found.");
 }
@@ -115,28 +115,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastDiv = document.getElementById("last");
 
   if (firstDiv && lastDiv) {
-    // Listen for scroll events on the document
-    window.addEventListener("wheel", (event) => {
+    let isNavigating = false; // Flag to prevent multiple navigations
+
+    // Function to handle scrolling behavior
+    const handleScroll = (event:any) => {
+      if (isNavigating) {
+        event.preventDefault();
+        return;
+      }
+
       const currentScroll = window.scrollY;
       const firstDivPosition = firstDiv.offsetTop;
       const lastDivPosition = lastDiv.offsetTop;
 
       if (event.deltaY < 0 && currentScroll <= firstDivPosition) {
         // Scrolling up on the first item, jump to the last item
+        isNavigating = true;
         window.scrollTo({
           top: lastDivPosition,
           left: 0,
           behavior: "smooth",
         });
-      } else if (event.deltaY >= 0 && currentScroll >= lastDivPosition) {
+        setTimeout(() => {
+          isNavigating = false;
+        }, 1000); // Delay to allow smooth scrolling to complete
+        event.preventDefault();
+      } else if (event.deltaY > 0 && currentScroll >= lastDivPosition) {
         // Scrolling down on the last item, jump to the first item
+        isNavigating = true;
         window.scrollTo({
           top: firstDivPosition,
           left: 0,
           behavior: "smooth",
         });
+        setTimeout(() => {
+          isNavigating = false;
+        }, 1000); // Delay to allow smooth scrolling to complete
+        event.preventDefault();
       }
-    });
+    };
+
+    // Attach event listener to prevent default scrolling
+    window.addEventListener("wheel", handleScroll, { passive: false });
   } else {
     console.warn("Elements with IDs 'first' and/or 'last' not found.");
   }
